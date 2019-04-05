@@ -31,11 +31,12 @@
                  app:layout_constraintEnd_toEndOf="parent"
                  android:layout_height="wrap_content"/>
 
-    <me.nakker.selectable_view.RadioGroup android:layout_width="wrap_content"
-                                          android:id="@+id/selectable_group"
-                                          app:layout_constraintStart_toStartOf="parent"
-                                          app:layout_constraintTop_toTopOf="parent"
-                                          app:constraint_referenced_ids="one, two"
-                                          android:layout_height="wrap_content"/>
+    <me.nakker.selectable_view.SelectableGroup android:layout_width="wrap_content"
+                                               android:id="@+id/selectable_group"
+                                               app:layout_constraintStart_toStartOf="parent"
+                                               app:layout_constraintTop_toTopOf="parent"
+                                               app:initial_select_view_ids="one, two"
+                                               app:constraint_referenced_ids="one, two"
+                                               android:layout_height="wrap_content"/>
 
 </android.support.constraint.ConstraintLayout>
