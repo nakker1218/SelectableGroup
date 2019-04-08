@@ -11,7 +11,7 @@ import android.widget.CompoundButton
  * @author nakker
  */
 class SelectableGroup @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
-    ConstraintHelper(context, attrs, defStyleAttr) {
+        ConstraintHelper(context, attrs, defStyleAttr) {
     private val compoundButtonList: MutableList<CompoundButton> = mutableListOf()
     private val maxSelections: Int
     private val selectionMode: SelectionMode
@@ -26,11 +26,11 @@ class SelectableGroup @JvmOverloads constructor(context: Context, attrs: Attribu
                 maxSelections = getInteger(R.styleable.SelectableGroup_max_selections, 1)
 
                 val rawSelectViewIds = getString(R.styleable.SelectableGroup_initial_select_view_ids)
-                    ?.split(",")
-                    ?.map { it.trim() }
+                        ?.split(",")
+                        ?.map { it.trim() }
 
                 rawSelectViewIds?.map {
-                    if (maxSelections < rawSelectViewIds.size) throw IllegalArgumentException()
+                    if (maxSelections < rawSelectViewIds.size) throw IllegalArgumentException("The initial select view count must not be over the Max Selection.")
                     return@map context.resources.getIdentifier(it, "id", context.packageName)
                 }?.forEach { id -> selectViewIds.add(id) }
 
@@ -137,7 +137,7 @@ class SelectableGroup @JvmOverloads constructor(context: Context, attrs: Attribu
                 return when (value) {
                     RADIO.value -> RADIO
                     SELECTABLE.value -> SELECTABLE
-                    else -> throw IllegalArgumentException()
+                    else -> throw IllegalArgumentException("Value must be success value.")
                 }
             }
         }
