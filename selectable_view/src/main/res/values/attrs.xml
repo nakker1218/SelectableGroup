@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="RadioGroup">
-        <attr name="initial_select_view_id" format="reference"/>
+    <declare-styleable name="SelectableGroup">
+        <attr name="max_selections" format="integer" />
+        <attr name="initial_select_view_ids" format="string" />
+        <attr name="selection_mode">
+            <enum name="radio" value="0" />
+            <enum name="selectable" value="1" />
+        </attr>
     </declare-styleable>
 </resources>
