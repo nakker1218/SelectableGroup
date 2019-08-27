@@ -142,4 +142,56 @@
         app:max_selections="2"
         app:selection_mode="radio" />
 
+    <TextView
+        android:id="@+id/custom_cell_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="RadioGroup CheckBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_checkbox_one" />
+
+    <me.nakker.selectableview.RadioCellView
+        android:id="@+id/radio_custom_cell_one"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:description="description1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/custom_cell_label"
+        app:title="title1" />
+
+    <me.nakker.selectableview.RadioCellView
+        android:id="@+id/radio_custom_cell_two"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:description="description2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_custom_cell_one"
+        app:title="title2" />
+
+    <me.nakker.selectableview.RadioCellView
+        android:id="@+id/radio_custom_cell_three"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:description="description3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_custom_cell_two"
+        app:title="title3" />
+
+    <me.nakker.selectable_view.SelectableGroup
+        android:id="@+id/radio_custom_cell_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="radio_custom_cell_one, radio_custom_cell_two, radio_custom_cell_three"
+        app:initial_select_view_ids="radio_custom_cell_two"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:max_selections="1"
+        app:selection_mode="radio" />
+
 </android.support.constraint.ConstraintLayout>
