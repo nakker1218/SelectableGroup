@@ -5,6 +5,7 @@ import android.support.annotation.IdRes
 import android.support.constraint.ConstraintHelper
 import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
+import android.view.View
 import android.widget.CompoundButton
 
 /**
@@ -12,7 +13,7 @@ import android.widget.CompoundButton
  */
 class SelectableGroup @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
         ConstraintHelper(context, attrs, defStyleAttr) {
-    private val compoundButtonList: MutableList<CompoundButton> = mutableListOf()
+    private val selectableViewMap: MutableMap<CompoundButton, View> = mutableMapOf()
     private val maxSelections: Int
     private val selectionMode: SelectionMode
 
@@ -49,43 +50,50 @@ class SelectableGroup @JvmOverloads constructor(context: Context, attrs: Attribu
 
     override fun updatePreLayout(container: ConstraintLayout?) {
         for (i in 0..mCount) {
-            val id = mIds[i]
-            val view = container?.getViewById(id) ?: return
-            val compoundButton = when (view) {
-                is CompoundButton -> view
-                is Selectable -> view.compoundButton
+            val rawView = container?.getViewById(mIds[i]) ?: return
+            val child = rawView
+
+            val selectableView = when (child) {
+                is CompoundButton -> Pair(rawView, child)
+                is Selectable -> Pair(rawView, child.compoundButton)
                 else -> return
             }
 
-            compoundButton.apply {
-                compoundButtonList.add(this)
+            selectableView.apply {
+                val (view, compoundButton) = this
+                selectableViewMap[compoundButton] = view
                 reselection()
 
-                setOnClickListener { clickedButton ->
-                    selectViewIds.forEach { id ->
-                        if (clickedButton.id == id) {
-                            selectViewIds.minusAssign(id)
-                            reselection()
-                            return@setOnClickListener
-                        }
-                    }
+                arrayOf(view, compoundButton).forEach {
+                    it.setOnClickListener {
+                        val clickedView = selectableViewMap[it] ?: it
 
-                    if (maxSelections <= selectViewIds.size) {
-                        when (selectionMode) {
-                            SelectionMode.RADIO -> {
-                                selectViewIds = selectViewIds.drop(1).toMutableList()
-                            }
-                            SelectionMode.SELECTABLE -> {
+                        selectViewIds.forEach { id ->
+                            if (clickedView.id == id) {
+                                selectViewIds.minusAssign(id)
                                 reselection()
+                                onCheckedChangeListener?.onCheckedChanged(selectViewIds)
                                 return@setOnClickListener
                             }
                         }
+
+                        if (maxSelections <= selectViewIds.size) {
+                            when (selectionMode) {
+                                SelectionMode.RADIO -> {
+                                    selectViewIds = selectViewIds.drop(1).toMutableList()
+                                    reselection()
+                                }
+                                SelectionMode.SELECTABLE -> {
+                                    reselection()
+                                    return@setOnClickListener
+                                }
+                            }
+                        }
+
+                        selectViewIds.add(clickedView.id)
+                        reselection()
+                        onCheckedChangeListener?.onCheckedChanged(selectViewIds)
                     }
-
-                    selectViewIds.add(id)
-                    reselection()
-
-                    onCheckedChangeListener?.onCheckedChanged(selectViewIds)
                 }
             }
         }
@@ -110,9 +118,9 @@ class SelectableGroup @JvmOverloads constructor(context: Context, attrs: Attribu
     }
 
     private fun reselection() {
-        compoundButtonList.forEach compoundButton@{ compoundButton ->
+        selectableViewMap.forEach compoundButton@{ (compoundButton, view) ->
             selectViewIds.take(maxSelections).forEach {
-                if (compoundButton.id != it) return@forEach
+                if (view.id != it) return@forEach
                 compoundButton.isChecked = true
                 return@compoundButton
             }
