@@ -1,197 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/radio_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="RadioGroup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <RadioButton
-        android:id="@+id/radio_one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@id/radio_two"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radio_label" />
+        <TextView
+            android:id="@+id/radio_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="RadioGroup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioButton
-        android:id="@+id/radio_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/radio_one"
-        app:layout_constraintTop_toTopOf="@id/radio_one" />
+        <RadioButton
+            android:id="@+id/radio_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@id/radio_two"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radio_label" />
 
-    <me.nakker.selectable_view.SelectableGroup
-        android:id="@+id/radio_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="radio_one, radio_two"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:selection_mode="radio" />
+        <RadioButton
+            android:id="@+id/radio_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/radio_one"
+            app:layout_constraintTop_toTopOf="@id/radio_one" />
 
-    <TextView
-        android:id="@+id/selectable_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="SelectableGroup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radio_one" />
+        <me.nakker.selectable_view.SelectableGroup
+            android:id="@+id/radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="radio_one, radio_two"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:selection_mode="radio" />
 
-    <RadioButton
-        android:id="@+id/selectable_one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@id/selectable_two"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/selectable_label" />
+        <View
+            android:id="@+id/radio_group_border"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radio_one" />
 
-    <RadioButton
-        android:id="@+id/selectable_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@id/selectable_three"
-        app:layout_constraintStart_toEndOf="@id/selectable_one"
-        app:layout_constraintTop_toTopOf="@id/selectable_one" />
+        <TextView
+            android:id="@+id/selectable_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="SelectableGroup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radio_group_border" />
 
-    <RadioButton
-        android:id="@+id/selectable_three"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@id/selectable_four"
-        app:layout_constraintStart_toEndOf="@id/selectable_two"
-        app:layout_constraintTop_toTopOf="@id/selectable_one" />
+        <RadioButton
+            android:id="@+id/selectable_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@id/selectable_two"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectable_label" />
 
-    <RadioButton
-        android:id="@+id/selectable_four"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/selectable_three"
-        app:layout_constraintTop_toTopOf="@id/selectable_one" />
+        <RadioButton
+            android:id="@+id/selectable_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/selectable_three"
+            app:layout_constraintStart_toEndOf="@id/selectable_one"
+            app:layout_constraintTop_toTopOf="@id/selectable_one" />
 
-    <me.nakker.selectable_view.SelectableGroup
-        android:id="@+id/selectable_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="selectable_one, selectable_two, selectable_three, selectable_four"
-        app:initial_select_view_ids="selectable_one, selectable_three"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:max_selections="2"
-        app:selection_mode="selectable" />
+        <RadioButton
+            android:id="@+id/selectable_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/selectable_four"
+            app:layout_constraintStart_toEndOf="@id/selectable_two"
+            app:layout_constraintTop_toTopOf="@id/selectable_one" />
 
-    <TextView
-        android:id="@+id/radio_checkbox_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="RadioGroup CheckBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/selectable_one" />
+        <RadioButton
+            android:id="@+id/selectable_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/selectable_three"
+            app:layout_constraintTop_toTopOf="@id/selectable_one" />
 
-    <CheckBox
-        android:id="@+id/radio_checkbox_one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@id/radio_checkbox_two"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radio_checkbox_label" />
+        <me.nakker.selectable_view.SelectableGroup
+            android:id="@+id/selectable_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="selectable_one, selectable_two, selectable_three, selectable_four"
+            app:initial_select_view_ids="selectable_one, selectable_three"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:max_selections="2"
+            app:selection_mode="selectable" />
 
-    <CheckBox
-        android:id="@+id/radio_checkbox_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@id/radio_checkbox_three"
-        app:layout_constraintStart_toEndOf="@id/radio_checkbox_one"
-        app:layout_constraintTop_toTopOf="@id/radio_checkbox_one" />
+        <View
+            android:id="@+id/selectable_group_border"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectable_one" />
 
-    <CheckBox
-        android:id="@+id/radio_checkbox_three"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/radio_checkbox_two"
-        app:layout_constraintTop_toTopOf="@id/radio_checkbox_one" />
+        <TextView
+            android:id="@+id/radio_checkbox_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="RadioGroup CheckBox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectable_group_border" />
 
-    <me.nakker.selectable_view.SelectableGroup
-        android:id="@+id/radio_checkbox_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="radio_checkbox_one, radio_checkbox_two, radio_checkbox_three"
-        app:initial_select_view_ids="radio_checkbox_one"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:max_selections="2"
-        app:selection_mode="radio" />
+        <CheckBox
+            android:id="@+id/radio_checkbox_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@id/radio_checkbox_two"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radio_checkbox_label" />
 
-    <TextView
-        android:id="@+id/custom_cell_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="RadioGroup CheckBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radio_checkbox_one" />
+        <CheckBox
+            android:id="@+id/radio_checkbox_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/radio_checkbox_three"
+            app:layout_constraintStart_toEndOf="@id/radio_checkbox_one"
+            app:layout_constraintTop_toTopOf="@id/radio_checkbox_one" />
 
-    <me.nakker.selectableview.RadioCellView
-        android:id="@+id/radio_custom_cell_one"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:description="description1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/custom_cell_label"
-        app:title="title1" />
+        <CheckBox
+            android:id="@+id/radio_checkbox_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/radio_checkbox_two"
+            app:layout_constraintTop_toTopOf="@id/radio_checkbox_one" />
 
-    <me.nakker.selectableview.RadioCellView
-        android:id="@+id/radio_custom_cell_two"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:description="description2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radio_custom_cell_one"
-        app:title="title2" />
+        <me.nakker.selectable_view.SelectableGroup
+            android:id="@+id/radio_checkbox_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="radio_checkbox_one, radio_checkbox_two, radio_checkbox_three"
+            app:initial_select_view_ids="radio_checkbox_one"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:max_selections="2"
+            app:selection_mode="radio" />
 
-    <me.nakker.selectableview.RadioCellView
-        android:id="@+id/radio_custom_cell_three"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:description="description3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radio_custom_cell_two"
-        app:title="title3" />
+        <View
+            android:id="@+id/radio_checkbox_group_border"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radio_checkbox_one" />
 
-    <me.nakker.selectable_view.SelectableGroup
-        android:id="@+id/radio_custom_cell_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="radio_custom_cell_one, radio_custom_cell_two, radio_custom_cell_three"
-        app:initial_select_view_ids="radio_custom_cell_two"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:max_selections="1"
-        app:selection_mode="radio" />
+        <TextView
+            android:id="@+id/custom_cell_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="RadioGroup CustomCellView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radio_checkbox_group_border" />
 
-</android.support.constraint.ConstraintLayout>
+        <me.nakker.selectableview.RadioCellView
+            android:id="@+id/radio_custom_cell_one"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:description="description1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/custom_cell_label"
+            app:title="title1" />
+
+        <me.nakker.selectableview.RadioCellView
+            android:id="@+id/radio_custom_cell_two"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:description="description2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radio_custom_cell_one"
+            app:title="title2" />
+
+        <me.nakker.selectableview.RadioCellView
+            android:id="@+id/radio_custom_cell_three"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:description="description3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radio_custom_cell_two"
+            app:title="title3" />
+
+        <me.nakker.selectable_view.SelectableGroup
+            android:id="@+id/radio_custom_cell_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="radio_custom_cell_one, radio_custom_cell_two, radio_custom_cell_three"
+            app:initial_select_view_ids="radio_custom_cell_two"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:max_selections="1"
+            app:selection_mode="radio" />
+
+        <View
+            android:id="@+id/radio_custom_cell_group_border"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radio_custom_cell_three" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
