@@ -19,7 +19,7 @@ class SelectableGroup @JvmOverloads constructor(context: Context, attrs: Attribu
 
     @IdRes
     private var selectViewIds: MutableList<Int> = mutableListOf()
-    private var onCheckedChangeListener: OnCheckedChangeListener? = null
+    private var onSelectChangeListener: OnSelectChangeListener? = null
 
     init {
         context.obtainStyledAttributes(attrs, R.styleable.SelectableGroup).apply {
@@ -72,7 +72,7 @@ class SelectableGroup @JvmOverloads constructor(context: Context, attrs: Attribu
                             if (clickedView.id == id) {
                                 selectViewIds.minusAssign(id)
                                 reselection()
-                                onCheckedChangeListener?.onCheckedChanged(selectViewIds)
+                                onSelectChangeListener?.onCheckedChanged(selectViewIds)
                                 return@setOnClickListener
                             }
                         }
@@ -92,7 +92,7 @@ class SelectableGroup @JvmOverloads constructor(context: Context, attrs: Attribu
 
                         selectViewIds.add(clickedView.id)
                         reselection()
-                        onCheckedChangeListener?.onCheckedChanged(selectViewIds)
+                        onSelectChangeListener?.onCheckedChanged(selectViewIds)
                     }
                 }
             }
@@ -105,17 +105,20 @@ class SelectableGroup @JvmOverloads constructor(context: Context, attrs: Attribu
         params.height = 0
     }
 
-    fun setOnCheckedChangeListener(onCheckedChanged: (checkedIds: List<Int>) -> Unit) {
-        setOnCheckedChangeListener(object : OnCheckedChangeListener {
+    fun setOnSelectChangeListener(onCheckedChanged: (checkedIds: List<Int>) -> Unit) {
+        setOnSelectChangeListener(object : OnSelectChangeListener {
             override fun onCheckedChanged(checkedIds: List<Int>) {
                 onCheckedChanged.invoke(checkedIds)
             }
         })
     }
 
-    fun setOnCheckedChangeListener(onCheckedChangeListener: OnCheckedChangeListener) {
-        this.onCheckedChangeListener = onCheckedChangeListener
+    fun setOnSelectChangeListener(onSelectChangeListener: OnSelectChangeListener) {
+        this.onSelectChangeListener = onSelectChangeListener
     }
+
+    @IdRes
+    fun getSelectedViewIds(): List<Int> = selectViewIds
 
     private fun reselection() {
         selectableViewMap.forEach compoundButton@{ (compoundButton, view) ->
@@ -128,7 +131,7 @@ class SelectableGroup @JvmOverloads constructor(context: Context, attrs: Attribu
         }
     }
 
-    interface OnCheckedChangeListener {
+    interface OnSelectChangeListener {
         fun onCheckedChanged(@IdRes checkedIds: List<Int>)
     }
 
