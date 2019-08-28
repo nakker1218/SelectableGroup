@@ -65,8 +65,8 @@ class SelectableGroup @JvmOverloads constructor(context: Context, attrs: Attribu
                 reselection()
 
                 arrayOf(view, compoundButton).forEach {
-                    it.setOnClickListener {
-                        val clickedView = selectableViewMap[it] ?: it
+                    it.setOnClickListener { clickedView ->
+                        val clickedView = selectableViewMap[clickedView] ?: it
 
                         selectViewIds.forEach { id ->
                             if (clickedView.id == id) {

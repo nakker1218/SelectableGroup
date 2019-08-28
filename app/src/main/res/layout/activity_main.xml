@@ -236,6 +236,68 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/radio_custom_cell_three" />
 
+        <TextView
+            android:id="@+id/selectable_custom_cell_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="SelectableGroup CustomCellView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radio_custom_cell_group_border" />
+
+        <me.nakker.selectableview.CheckBoxCellView
+            android:id="@+id/selectable_custom_cell_one"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:description="description1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectable_custom_cell_label"
+            app:title="title1" />
+
+        <me.nakker.selectableview.CheckBoxCellView
+            android:id="@+id/selectable_custom_cell_two"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:description="description2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectable_custom_cell_one"
+            app:title="title2" />
+
+        <me.nakker.selectableview.CheckBoxCellView
+            android:id="@+id/selectable_custom_cell_three"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:description="description3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectable_custom_cell_two"
+            app:title="title3" />
+
+        <me.nakker.selectable_view.SelectableGroup
+            android:id="@+id/selectable_custom_cell_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="selectable_custom_cell_one, selectable_custom_cell_two, selectable_custom_cell_three"
+            app:initial_select_view_ids="selectable_custom_cell_two"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:max_selections="2"
+            app:selection_mode="selectable" />
+
+        <View
+            android:id="@+id/selectable_custom_cell_group_border"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectable_custom_cell_three" />
+
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>
